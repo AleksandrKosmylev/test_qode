@@ -44,6 +44,14 @@ class Lesson(models.Model):
         verbose_name='Ссылка',
     )
 
+    course = models.ForeignKey(Course,
+        on_delete=models.CASCADE,
+        related_name='lessons',
+        verbose_name='Курс',
+        blank=True,
+        null=True
+    )
+
     # TODO
 
     class Meta:
