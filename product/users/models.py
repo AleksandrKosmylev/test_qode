@@ -1,6 +1,9 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+from courses.models import Course
+
+
 class CustomUser(AbstractUser):
     """Кастомная модель пользователя - студента."""
 
@@ -41,6 +44,17 @@ class Subscription(models.Model):
     """Модель подписки пользователя на курс."""
 
     # TODO
+    student = models.ForeignKey(CustomUser,
+        on_delete=models.CASCADE,
+        verbose_name='Студент',
+        null=True
+    )
+    course = models.ForeignKey(Course,
+        on_delete=models.CASCADE,
+        verbose_name='Курс',
+        null=True,
+    )
+
 
     class Meta:
         verbose_name = 'Подписка'
